@@ -13,16 +13,30 @@ const countModifier = (count = 0,action) => {
     default:
       return count;
   }
- return count;
 };
+
+number.innerText = 0;
 
 const countStore = createStore(countModifier);
 
-countStore.dispatch({type:'ADD'});
-countStore.dispatch({type:'ADD'});
-countStore.dispatch({type:'ADD'});
-countStore.dispatch({type:'ADD'});
-countStore.dispatch({type:'ADD'});
-countStore.dispatch({type:'MINUS'});
+const onChange = () => {
+  number.innerText = countStore.getState();
+  
+}
 
-console.log(countStore.getState());
+countStore.subscribe(onChange);
+
+const handleAdd = () => {
+  countStore.dispatch({ type: "ADD" });
+  console.log("ADD");
+}
+
+const handleMinus = () => {
+  ConstantSourceNode.dispatch({ type:"MINUS" });
+  console.log("MINUS");
+}
+
+add.addEventListener("click",() => handleAdd);
+minus.addEventListener("click",() => handleMinus);
+
+ 
