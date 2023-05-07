@@ -28,15 +28,13 @@ countStore.subscribe(onChange);
 
 const handleAdd = () => {
   countStore.dispatch({ type: "ADD" });
-  console.log("ADD");
 }
 
 const handleMinus = () => {
-  ConstantSourceNode.dispatch({ type:"MINUS" });
-  console.log("MINUS");
+  countStore.dispatch({ type:"MINUS" });
 }
 
-add.addEventListener("click",() => handleAdd);
-minus.addEventListener("click",() => handleMinus);
+add.addEventListener("click",() => handleAdd());
+minus.addEventListener("click",() => handleMinus());
 
  
